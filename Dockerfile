@@ -6,7 +6,8 @@ COPY . .
 
 # ARG VITE_API_BASE_URL=https://api.mc.dstw.dev
 # ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
-RUN npm run build
+# RUN npm run build
+RUN --mount=type=cache,target=/app/.next/cache npm run build
 
 FROM nginx:alpine
 RUN echo 'server { \
